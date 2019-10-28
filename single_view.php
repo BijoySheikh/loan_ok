@@ -147,7 +147,7 @@ if ($result = mysqli_query($conn, $sql)) {
             </div>
             <div class="col-md-3 col-sm-12 text-white">
               <div class="text-right mt-2">
-                <button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-whatever="@getbootstrap">Open modal for @getbootstrap
+                <button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-whatever="@getbootstrap">কিস্তি নিবন্ধন করুন
                 </button>
               </div>
             </div>
@@ -228,13 +228,35 @@ if ($res->num_rows > 0) {
 <td> " . $row["value"] . "</td>
 <td> " . $row["value"] . "</td>
 <td class='text-right'><a class='btn btn-danger btn-sm' id='alert' href='single_view.php?id=" . $identy . "'><i class='fas fa-trash-alt'></i></i></a>
-<a class='btn btn-warning btn-sm btn-delete' value='1' name='actiondelete' Onclick='return ConfirmDelete();' id='alert'  href='premier_data_delete.php?id=" . $row["id"] . "'><i class='fas fa-times'></i></a></td></tr>";
+<a class='btn btn-warning btn-sm btn-delete' value='1' name='actiondelete' Onclick='return ConfirmDelete();' id='alert'  href='premier_data_delete.php?id=" . $row["id"] . "&mId=". $row["test"] ."'><i class='fas fa-times'></i></a></td></tr>";
     }
 } else {
-    echo "no result for this member";
+    echo "<h5 class='text-info'>কিস্তি নিবন্ধনকৃত নেই</h5>";
 }
 $conn->close();
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           </table>
         </div>
       </div>
