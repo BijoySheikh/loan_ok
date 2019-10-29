@@ -4,8 +4,8 @@ $id = $_GET['id'];
 $sql = "SELECT * FROM all_member_form_data WHERE id = $id";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
-    // output data of each row
-    while ($row = $result->fetch_assoc()) {
+// output data of each row
+while ($row = $result->fetch_assoc()) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,43 +68,89 @@ if ($result->num_rows > 0) {
     <div class="container mt-3">
       <div class="row">
         <div class="col-sm-3">
-          <div class="text-center">
+          <div class="text-center mt-2 mb-3">
             <?php
-        echo "<div id='img_div'>";
-        echo "<img alt='image of " . $row["m_name"] . " '  class='img-thumbnail rounded' src='images/" . $row['image'] . "' >";
-        echo "</div>";
+if($row['image']){
+echo "<div id='img_div'>";
+echo "<img width='200' alt='image of " . $row["m_name"] . " '  class='img-thumbnail rounded' src='images/" . $row['image'] . "' >";
+echo "</div>";
+}
+else{
+echo '<img width="200" src="images/app_image/blank.jpg" alt="image not found"></br>';
+echo "<button class='btn btn-sm btn-info mt-2'>ছবি যোগ করুন</button>";
+}
 ?>
           </div>
         </div>
+        <img src="" alt="">
         <div class="col-sm-9">
-          <div class="row">
+          <div class="row mt-2">
             <div class="col-sm-6">
-              <h3 class="mb-3">নাম: 
-                <span class="text-danger">
-                  <?php echo $row["m_name"]; ?>
-                </span>
-              </h3>
-              <p>সদস্য আই.ডি :  
-                <?php echo $row["id"]; ?> 
-              </p>
-              <p>পিতার নাম: 
-                <?php echo $row["f_name"]; ?> 
-              </p>
-              <p>মোবাইল নং: 
-                <?php echo $row["phone_no"]; ?>
-              </p>
+              <table class="table">
+                <h3 class="mb-3 ml-2 text-center">নাম: 
+                  <span class="text-danger">
+                    <?php echo $row["m_name"]; ?>
+                  </span>
+                </h3>
+                <tbody>
+                  <tr>
+                    <th scope="row">
+                      পিতার নাম:
+                    </th>
+                    <td > 
+                      <?php echo $row["f_name"]; ?>
+                    </td>                 
+                  </tr>
+                  <tr>
+                    <th width="200px" scope="row">সদস্য আই.ডি :
+                    </th>
+                    <td>
+                      <?php echo $row["id"]; ?>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">মোবাইল নং:
+                    </th>
+                    <td>
+                      <?php echo $row["phone_no"]; ?>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
             <div class="col-sm-6">
-              <h5>ঋণের পরিমাণ: 
-                <?php echo $row["loan_amount"]; ?> /- 
-              </h5> 
-              <p>মূনাফার পরিমাণ: 
-                <?php echo $row["profit_amount"]; ?> /- 
-              </p> 
-              <hr>
-              <p>মোট:  
-                <?php echo $row["total_amount"]; ?> /- 
-              </p> 
+              <table class="table">
+                <h4 class="mb-3 ml-2">ঋণের পরিমাণ: 
+                  <span class="text-success">
+                    <?php echo $row["loan_amount"]; ?>
+                  </span>
+                  টাকা
+                </h4>
+                <tbody>
+                  <tr>
+                    <th scope="row">
+                      মূনাফার পরিমাণ: 
+                    </th>
+                    <td>
+                      <?php echo $row["profit_amount"]; ?> /-
+                    </td>                 
+                  </tr>
+                  <tr>
+                    <th scope="row">মোট টাকা:
+                    </th>
+                    <td>
+                      <?php echo $row["total_amount"]; ?> /-
+                    </td>
+                  </tr>
+                  <tr>
+                    <th width="200px" scope="row">সাপ্তাহিক কিস্তি :
+                    </th>
+                    <td>
+                      <?php echo $row["id"]; ?>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -112,10 +158,10 @@ if ($result->num_rows > 0) {
       <hr>
     </div>
     <?php
-        $identy = $row["id"];
-    }
+$identy = $row["id"];
+}
 } else {
-    echo "0 results";
+echo "0 results";
 }
 ?>
     <!-- topbar -->
@@ -128,11 +174,11 @@ if ($result->num_rows > 0) {
                 <?php
 $sql = "SELECT * FROM member_premier_data where test=$identy";
 if ($result = mysqli_query($conn, $sql)) {
-    // Return the number of rows in result set
-    $rowcount = mysqli_num_rows($result);
-    printf($rowcount);
-    // Free result set
-    mysqli_free_result($result);
+// Return the number of rows in result set
+$rowcount = mysqli_num_rows($result);
+printf($rowcount);
+// Free result set
+mysqli_free_result($result);
 }
 ?> টি
               </h5>   
@@ -218,9 +264,9 @@ if ($res->num_rows > 0) {
               </tr>
             </thead>
             <?php
-    // output data of each row
-    while ($row = $res->fetch_assoc()) {
-        echo "<tr><td> " . $row["first_name"] . " </td>
+// output data of each row
+while ($row = $res->fetch_assoc()) {
+echo "<tr><td> " . $row["first_name"] . " </td>
 <td> " . $row["last_name"] . "</td>
 <td> " . $row["test"] . "</td>
 <td> " . $row["id"] . "</td>
@@ -229,34 +275,12 @@ if ($res->num_rows > 0) {
 <td> " . $row["value"] . "</td>
 <td class='text-right'><a class='btn btn-danger btn-sm' id='alert' href='single_view.php?id=" . $identy . "'><i class='fas fa-trash-alt'></i></i></a>
 <a class='btn btn-warning btn-sm btn-delete' value='1' name='actiondelete' Onclick='return ConfirmDelete();' id='alert'  href='premier_data_delete.php?id=" . $row["id"] . "&mId=". $row["test"] ."'><i class='fas fa-times'></i></a></td></tr>";
-    }
+}
 } else {
-    echo "<h5 class='text-info'>কিস্তি নিবন্ধনকৃত নেই</h5>";
+echo "<h5 class='text-info text-center'>কিস্তি নিবন্ধনকৃত নেই</h5>";
 }
 $conn->close();
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
           </table>
         </div>
       </div>
@@ -284,4 +308,3 @@ $conn->close();
   </script>
   </body>
 </html> 
-
