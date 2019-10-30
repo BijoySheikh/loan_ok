@@ -24,6 +24,11 @@ while ($row = $result->fetch_assoc()) {
     <link href="css/style.css" rel="stylesheet">   
     <link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet">
     <style>
+
+      button.camera_btn{
+        border-radius:50%; width:50px; height:50px; position: absolute; margin-top:-50px; right:50px; font-size:25px;
+      }
+
       .header-top-bg{
         background: #004d66;
       }
@@ -65,6 +70,9 @@ while ($row = $result->fetch_assoc()) {
         </div>
       </nav>
     </div>
+
+
+    
     <div class="container mt-3">
       <div class="row">
         <div class="col-sm-3">
@@ -77,7 +85,7 @@ echo "</div>";
 }
 else{
 echo '<img width="200" src="images/app_image/blank.jpg" alt="image not found"></br>';
-echo "<button class='btn btn-sm btn-info mt-2'>ছবি যোগ করুন</button>";
+echo "<button class='camera_btn btn btn-sm btn-info'><i class='fas fa-camera'></i></button>";
 }
 ?>
           </div>

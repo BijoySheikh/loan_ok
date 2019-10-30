@@ -1,8 +1,6 @@
 
 <?php
-
 include('sql_config.php');
-
 
 
 if(isset($_POST["m_name"], $_POST["f_name"])){
