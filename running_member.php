@@ -420,17 +420,17 @@ include 'sql_config.php';
                 <div class="col-md-3 col-sm-12 text-white mt-3 mb-2">
                 <h5 >বর্তমান সদস্য :
                               
-                <?php
-$sql = "SELECT * FROM all_member_form_data ORDER BY id";
-if ($result = mysqli_query($conn, $sql)) {
-    // Return the number of rows in result set
-    $rowcount = mysqli_num_rows($result);
-    printf($rowcount);
-    // Free result set
-    mysqli_free_result($result);
-}
+                              <?php
+              $sql = "SELECT * FROM all_member_form_data ORDER BY id";
+              if ($result = mysqli_query($conn, $sql)) {
+                  // Return the number of rows in result set
+                  $rowcount = mysqli_num_rows($result);
+                  printf($rowcount);
+                  // Free result set
+                  mysqli_free_result($result);
+              }
 
-?> জন
+              ?> জন
                     
                  </h5>  
                 </div>
@@ -461,8 +461,8 @@ if ($result = mysqli_query($conn, $sql)) {
                 <?php
 
 
-$sql = "SELECT id, loan_date, m_name, f_name, loan_amount, total_amount FROM all_member_form_data ORDER BY id ASC";
-$res = $conn->query($sql);
+  $sql = "SELECT id, loan_date, m_name, f_name, loan_amount, total_amount FROM all_member_form_data ORDER BY id ASC";
+  $res = $conn->query($sql);
 
 if ($res->num_rows > 0) {
     // output data of each row
