@@ -1,4 +1,13 @@
+<?php
+include "sql_config.php";
+$id = $_GET['id'];
+$sql = "SELECT * FROM all_member_form_data WHERE id = $id";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+// output data of each row
+while ($row = $result->fetch_assoc()) {
 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -405,8 +414,18 @@
             <div class="d-flex mt-4">
 			<div class="image_outer_container">
 				<div class="green_icon"></div>
-				<div class="image_inner_container">
-					<img src="https://i.pinimg.com/originals/43/96/61/439661dcc0d410d476d6d421b1812540.jpg">
+				<div class="image_inner_container shadow">
+        <?php
+if($row['image']){
+echo "<div id='img_div'>";
+echo "<img  alt='image of " . $row["m_name"] . " ' src='images/" . $row['image'] . "' >";
+echo "</div>";
+}
+else{
+echo '<img width="200" src="images/app_image/blank.jpg" alt="image not found"></br>';
+echo "<button class='camera_btn btn btn-sm btn-info'><i class='fas fa-camera'></i></button>";
+}
+?>
 				</div>
 			</div>
 		</div>
@@ -415,29 +434,29 @@
             
         <!-- table 1 -->    
     <div class="col-md-5 mt-4">
-         <div class="card">
+         <div class="card shadow">
               <div class="table-responsive">
               <table class="table table-borderless">
                 <thead>
-                    <tr>
-                      <th scope="col"><h4>নাম: </h4></th>
-                    <th class="text-right" scope="col"><h4>নাম: fsfsdfsfsd</h4></th>
+                    <tr >
+                      <th scope="col" width="150"><h4>নাম: </h4></th>
+                    <th class="" scope="col"><h4><?php echo $row['m_name'];?></h4></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                     <th scope="row"> <h5>পিতার নাম : </h5></th>
-                    <td class="text-right"><h5>sdgfsdf</h5></td>
+                    <td class=""><h5><?php echo $row['f_name'];?></h5></td>
                   
                     </tr>
                     <tr>
                     <th scope="row"><h5>স্বামীর নাম: </h5></th>
-                    <td class="text-right"><h5>sdgfsdf</h5></td>
+                    <td class=""><h5><?php echo $row['m_name'];?></h5></td>
                  
                     </tr>
                     <tr>
                     <th scope="row"><h5>মোবাইল: </h5></th>
-                    <td class="text-right"><h5>sdgfsdf</h5></td>
+                    <td class=""><h5><?php echo $row['phone_no'];?></h5></td>
                     </tr>
                 </tbody>
                 </table>
@@ -450,28 +469,28 @@
                
         <!-- table 1 -->    
     <div class="col-md-4 mt-4">
-         <div class="card">
+         <div class="card shadow">
               <div class="table-responsive">
               <table class="table table-warning">
                 <thead>
                     <tr>
                       <th scope="col"><h5 class="text-danger">লোনের পরিমাণ: </h5></th>
-                    <td class="text-right" scope="col"><h5>fsfsdfsfsd</h5></td>
+                    <td class="text-right" scope="col"><h5><?php echo $row['total_amount'];?> টাকা</h5></td>
                     </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <th scope="row"><h5>মূনাফা: </h5></th>
-                    <td class="text-right"><h5>fsdfsd</h5></td>
+                    <td class="text-right"><h5><?php echo $row['profit_amount'];?> টাকা</h5></td>
                     </tr>
                     <tr>
                     <th scope="row"> <h5>আদায়: </h5></th>
-                    <td class="text-right"><h5>fsdfsd</h5></td>
+                    <td class="text-right"><h5><?php echo $row['profit_amount'];?> টাকা</h5></td>
                   
                     </tr>
                     <tr>
                     <th scope="row"><h5>বাকী: </h5></th>
-                    <td class="text-right"><h5>fsdfsd</h5></td>
+                    <td class="text-right"><h5><?php echo $row['profit_amount'];?> টাকা</h5></td>
                  
                     </tr>
                     
@@ -493,56 +512,59 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-6">
-        <div class="table-responsive">
-              <table class="table table-bordered">
+        <div class="table-responsive shadow">
+              <table class="table table-bordered mb-5">
                 <thead>
                     <tr>
-                      <th scope="col"><h6 class="text-danger">ঋণ গ্রহনের তারিখ: </h6></th>
-                    <td class="text-left" scope="col"><h6>fsfsdfsfsd</h6></td>
+                      <th scope="col" width="200"><h6 class="text-danger">ঋণ গ্রহনের তারিখ: </h6></th>
+                    <td class="text-left" scope="col"><h6><?php echo $row['loan_date'];?></h6></td>
                     </tr>
                 </thead>
                 <tbody>
+                <th scope="row"><h6>মূনাফা: </h6></th>
+                    <td class="text-left"><h6>fsdfsd</h6></td>
+                  </tr>
+              
                 <tr>
                     <th scope="row"><h6>: </h6></th>
-                    <td class="text-left"><h6>fsdfsd</h6></td>
+                    <td class="text-left"><h6><?php echo $row['permanent_addr'];?></h6></td>
                     </tr>
                     <tr>
-                <tr>
-                    <th scope="row"><h6>মোট কিস্তির সংখ্যা: </h6></th>
-                    <td class="text-left"><h6>fsdfsd</h6></td>
+                    <th scope="row"><h6>সাপ্তাহিক কিস্তির সংখ্যা :  </h6></th>
+                    <td class="text-left"><h6><?php echo $row['permanent_addr'];?> টি</h6></td>
+                 
                     </tr>
                     <tr>
                     <th scope="row"> <h6>সাপ্তাহিক কিস্তির পরিমাণ: </h6></th>
-                    <td class="text-left"><h6>fsdfsd</h6></td>
+                    <td class="text-left"><h6><?php echo $row['premier_amount'];?> টাকা</h6></td>
                   
                     </tr>
-                    <tr>
-                    <th scope="row"><h6>বাকী: </h6></th>
-                    <td class="text-left"><h6>fsdfsd</h6></td>
-                 
-                    </tr>
+                    
                     
                 </tbody>
                 </table>
               </div>
         </div>
         <div class="col-sm-6">
-        <div class="table-responsive">
+        <div class="table-responsive  shadow mt-3">
               <table class="table table-bordered">
                 <thead>
                     <tr>
-                      <th scope="col"><h6 class="text-danger">লোনের পরিমাণ: </h6></th>
+                      <th scope="col" width="200"><h6 class="text-danger">লোনের পরিমাণ: </h6></th>
                     <td class="text-left" scope="col"><h6>fsfsdfsfsd</h6></td>
                     </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <th scope="row"><h6>মূনাফা: </h6></th>
-                    <td class="text-left"><h6>fsdfsd</h6></td>
+                  <tr>
+                    <th scope="row" width="200"><h6>বর্তমান ঠিকানা:</h6></th>
+                    <td class="text-left"><h6><?php echo $row['present_addr'];?></h6></td>
                     </tr>
                     <tr>
-                    <th scope="row"> <h6>আদায়: </h6></th>
-                    <td class="text-left"><h6>fsdfsd</h6></td>
+                    
+                    <tr>
+                    <th scope="row"> <h6>জামিনদার: </h6></th>
+                    <td class="text-left"><h6><?php echo $row['refer_name'];?></h6></td>
                   
                     </tr>
                     <tr>
@@ -572,6 +594,11 @@
 
 
 
+<?php
+
+    }
+  }
+?>
 
 
 

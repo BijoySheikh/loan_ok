@@ -64,7 +64,7 @@ while ($row = $result->fetch_assoc()) {
             </a>
             <a href="add_member.php" class="btn btn-sm btn-info ml-2">সদস্য যোগ করুন
             </a>
-            <a href="add_member.php" class="btn btn-sm btn-info ml-2">সদস্য যোগ করুন
+            <a href="member_details.php?id=<?php echo $id;?>" class="btn btn-sm btn-danger ml-2">সদস্য যোগ করুন
             </a>
           </ul>
         </div>
@@ -140,7 +140,7 @@ echo "<button class='camera_btn btn btn-sm btn-info'><i class='fas fa-camera'></
                       মূনাফার পরিমাণ: 
                     </th>
                     <td>
-                      <?php echo $row["profit_amount"]; ?> /-
+                      <?php    ?> /-
                     </td>                 
                   </tr>
                   <tr>
