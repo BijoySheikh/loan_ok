@@ -35,6 +35,10 @@ while ($row = $result->fetch_assoc()) {
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/member_detail.css">
     <style>
+          .ui-input{
+          border: none !important;
+          border-color: transparent !important;
+      }
         tr,h3,h4  {
             line-height: 1;
             }
@@ -422,7 +426,7 @@ echo "<img  alt='image of " . $row["m_name"] . " ' src='images/" . $row['image']
 echo "</div>";
 }
 else{
-echo '<img width="200" src="images/app_image/blank.jpg" alt="image not found"></br>';
+echo '<img src="images/app_image/blank.jpg" alt="image not found"></br>';
 echo "<button class='camera_btn btn btn-sm btn-info'><i class='fas fa-camera'></i></button>";
 }
 ?>
@@ -432,9 +436,10 @@ echo "<button class='camera_btn btn btn-sm btn-info'><i class='fas fa-camera'></
             </div>     
    
             
-        <!-- table 1 -->    
+       <!-- ============================================= 111111111  ========================================================= -->
+
     <div class="col-md-5 mt-4">
-         <div class="card shadow">
+         <div class="card shadow p-2">
               <div class="table-responsive">
               <table class="table table-borderless">
                 <thead>
@@ -467,9 +472,10 @@ echo "<button class='camera_btn btn btn-sm btn-info'><i class='fas fa-camera'></
 
 
                
-        <!-- table 1 -->    
-    <div class="col-md-4 mt-4">
-         <div class="card shadow">
+       <!-- ============================================= 222222222 ========================================================= -->   
+    <div class="col-md-4  mt-4">
+    
+         <div class="card shadow p-2">
               <div class="table-responsive">
               <table class="table table-warning">
                 <thead>
@@ -499,7 +505,7 @@ echo "<button class='camera_btn btn btn-sm btn-info'><i class='fas fa-camera'></
               </div>
           </div>
     </div> 
-       <!-- table 1 end-->    
+       <!-- table 2 end-->    
        
        
         </div>
@@ -508,12 +514,17 @@ echo "<button class='camera_btn btn btn-sm btn-info'><i class='fas fa-camera'></
 <hr>
 
 
-<!-- table 3 -->
+<!-- ============================================= 33333333 ========================================================= -->   
+
 <div class="container">
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-md-6 col-sm-12">
+        <div class="text-center h5 mb-3">
+        ঋণ সংক্রান্ত বিবরণী
+        </div>
         <div class="table-responsive shadow">
-              <table class="table table-bordered mb-5">
+      
+              <table class="table table-bordered">
                 <thead>
                     <tr>
                       <th scope="col" width="200"><h6 class="text-danger">ঋণ গ্রহনের তারিখ: </h6></th>
@@ -521,61 +532,107 @@ echo "<button class='camera_btn btn btn-sm btn-info'><i class='fas fa-camera'></
                     </tr>
                 </thead>
                 <tbody>
-                <th scope="row"><h6>মূনাফা: </h6></th>
+                <th scope="row"><h6>ঋণের পরিমাণ: </h6></th>
                     <td class="text-left"><h6>fsdfsd</h6></td>
                   </tr>
               
                 <tr>
-                    <th scope="row"><h6>: </h6></th>
+                    <th scope="row"><h6>মূনাফার পরিমাণ: </h6></th>
                     <td class="text-left"><h6><?php echo $row['permanent_addr'];?></h6></td>
                     </tr>
                     <tr>
-                    <th scope="row"><h6>সাপ্তাহিক কিস্তির সংখ্যা :  </h6></th>
-                    <td class="text-left"><h6><?php echo $row['permanent_addr'];?> টি</h6></td>
+                    <th scope="row"><h6>সঞ্চয়ের পরিমাণ :  </h6></th>
+                    <td class="text-left"><h6><?php echo $row['permanent_addr'];?> টাকা</h6></td>
                  
                     </tr>
+
                     <tr>
-                    <th scope="row"> <h6>সাপ্তাহিক কিস্তির পরিমাণ: </h6></th>
-                    <td class="text-left"><h6><?php echo $row['premier_amount'];?> টাকা</h6></td>
-                  
+                      <th scope="row"> <h6>মোট কিস্তির সংখ্যা: </h6></th>
+                      <td class="text-left"><h6><?php echo $row['premier_amount'];?> টি</h6></td>
                     </tr>
                     
+                    <tr>
+                      <th scope="row"> <h6>সাপ্তাহিক কিস্তির পরিমাণ: </h6></th>
+                      <td class="text-left"><h6><?php echo $row['premier_amount'];?> টাকা</h6></td>
+                    </tr>
+
+                    
+                    <tr>
+                      <th scope="row"> <h6>মোট কিস্তির সংখ্যা: </h6></th>
+                      <td class="text-left"><h6><?php echo $row['premier_amount'];?> টি</h6></td>
+                    </tr>
                     
                 </tbody>
                 </table>
               </div>
         </div>
-        <div class="col-sm-6">
-        <div class="table-responsive  shadow mt-3">
+        <!-- table 3 end -->
+
+
+        <!-- table 4 -->
+        <div class="col-md-6 col-sm-12">
+        <div class="text-center h5 mb-2">
+        সদস্যের পরিচিতি তথ্য
+        </div>
+
+<!-- =============================================  4444444444444  ========================================================= -->
+        <form action="">
+        <div class="table-responsive  shadow mt-3 p-0">
               <table class="table table-bordered">
                 <thead>
                     <tr>
-                      <th scope="col" width="200"><h6 class="text-danger">লোনের পরিমাণ: </h6></th>
-                    <td class="text-left" scope="col"><h6>fsfsdfsfsd</h6></td>
+                      <th scope="col" width="200"><h6>বর্তমান ঠিকানা: </h6></th>
+                    <td class="text-left" scope="col"><input value="<?php echo $row['present_addr'];?> " class="ui-input" type="text"></td>
                     </tr>
                 </thead>
                 <tbody>
                 <tr>
                   <tr>
-                    <th scope="row" width="200"><h6>বর্তমান ঠিকানা:</h6></th>
+                    <th scope="row" width="200"><h6>স্থায়ী ঠিকানা: </h6></th>
                     <td class="text-left"><h6><?php echo $row['present_addr'];?></h6></td>
                     </tr>
                     <tr>
+                    <tr>
+                      <th scope="col" width="200"><h6>ভোটার আই.ডি নং: </h6></th>
+                      <td class="text-left" scope="col"><h6>fsfsdfsfsd</h6></td>
+                    </tr>
                     
                     <tr>
                     <th scope="row"> <h6>জামিনদার: </h6></th>
                     <td class="text-left"><h6><?php echo $row['refer_name'];?></h6></td>
-                  
                     </tr>
                     <tr>
-                    <th scope="row"><h6>বাকী: </h6></th>
-                    <td class="text-left"><h6>fsdfsd</h6></td>
-                 
+                    <th scope="row"> <h6>জামিনদারের মোবাইল নং: </h6></th>
+                    <td class="text-left"><h6><?php echo $row['refer_name'];?></h6></td>
                     </tr>
-                    
+                    <tr>
+                      <th scope="row"><h6>জামিনদারের ঠিকানা: </h6></th>
+                      <td class="text-left"><h6>fsdfsd</h6></td>
+                    </tr>
+                    <tr>
+                      <th scope="row"><h6>বিবাহিত: </h6></th>
+                      <td class="text-left"><h6>fsdfsd</h6></td>
+                    </tr>
+                    <tr>
+                      <th scope="row"><h6>ধর্ম: </h6></th>
+                      <td class="text-left"><h6>fsdfsd</h6></td>
+                    </tr>
+                    <tr>
+                      <th scope="row"><h6>লিঙ্গ: </h6></th>
+                      <td class="text-left"><h6>fsdfsd</h6></td>
+                    </tr>
+                    <tr>
+                      <th scope="row"><h6>বর্তমান পেশা: </h6></th>
+                      <td class="text-left"><h6>fsdfsd</h6></td>
+                    </tr>
                 </tbody>
                 </table>
               </div>
+              <!-- table 4 end -->
+              </form>
+
+
+
         </div>
         
     </div>
