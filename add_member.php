@@ -9,6 +9,7 @@
     <title>SB Admin 2 - Dashboard
     </title>
     <!-- Custom fonts for this template-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <link href="js/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" />
@@ -399,6 +400,8 @@
             </ul>
           </nav>
           <!-- End of Topbar -->
+
+
       
           <!-- content -->
           <div class="container mt-2 mb-5">
@@ -409,7 +412,7 @@
                     <div class="col-md-2">
                     </div>
                     <div class="col-md-8 ">
-                      <div class="user-form mt-3">
+                      <div class="user-form mt-3" ng-app="">
                         <form action="insert.php" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit="return check_blank()">
                           <div class="row justify-content-center" >
                             <div class="col-md-6" >
@@ -419,29 +422,49 @@
                               <br>
                               <input class="mt-3"  type="text" ng-model="phone_no" id="phone_no" name="phone_no"  placeholder="ফোন নাম্বার*">
                               <br>
-                              <input class="mt-3" type="text"  name="refer_name" placeholder="জামিনদারের নাম">
-                              <br>
-                              <input class="mt-3" type="text"  name="present_addr"  placeholder="বর্তমান ঠিকানা">
+                              <input class="mt-3" type="text"  name="profesion"  placeholder="পেশা">
                               <br>
                               <input class="mt-3" type="text"  name="permanent_addr"  placeholder="স্থায়ী ঠিকানা">
                               <br>
-                              <input type="hidden" name="size" value="1000000">  
-                              <input type="file" name="image">
+                              <input class="mt-3" type="text"  name="present_addr"  placeholder="বর্তমান ঠিকানা">
+                              <br>
+                              <input class="mt-3" type="text"  name="refer_name" placeholder="জামিনদারের নাম">
+                              <br>
+                              <input class="mt-3" type="text"  name="refer_addr"  placeholder="জামিনদারের ঠিকানা">
+                              <br>
+                              <input class="mt-3" type="text"  name="refer_phone"  placeholder="জামিনদারের মোবাইল নং">
+                              <br>                           
+                              <input class="mt-3" type="text"  name="about_work"  placeholder="কি কাজে লোন প্রয়োজন"> 
+                              <br>
+                              <label for="upload_img" class="btn btn-success btn-sm mt-4">ছবি যোগ করুন</label>
+                              <input style=" display:none;" class="mb-5 mt-3" type="file" name="image" id="upload_img" accept="image/*">
+                     
+                      
                             </div>
                             <div class="col-md-6 col-sm-12 col-xs-12">
-                              <input class="mt-3" type="number" name="loan_sirial"  placeholder="ঋণ নং">
+                              <input class="mt-3" type="number" name="nid"  placeholder="ভোটার আই.ডি নং">
                               <br>
                               <input class="mt-3" name="loan_date" type="text" id="datepicker" placeholder="তারিখ*" min="2010-01-01" value="">
-                              <input class="mt-3" id="loan_amount" type="number" ng-model="loan_amount" name="loan_amount"  placeholder="ঋণের পরিমাণ*">
+                              <input class="mt-3" id="loan_amount" type="number" ng-model="loan_amount" name="loan_amount"  placeholder="লোনের পরিমাণ*">
                               <br>
                               <input class="mt-3" id="profit_amount" type="number" ng-model="profit" name="profit_amount"  placeholder="মুনাফার পরিমাণ*">
                               <br>
-                              <input class="mt-3" type="number" name="total_amount"  placeholder="মোট টাকা" value="">
+                              <input class="mt-3" type="number" name="total_amount"  placeholder="মোট " value="{{loan_amount + profit}}">
                               <br>
-                              <input class="mt-3" type="number" name="premier_amount" ng-model="premier"  placeholder="কিস্তির পরিমাণ">
+                              
+                              <input class="mt-3" type="number" name="premier" ng-model="premier"  placeholder="কিস্তির সংখ্যা">
+                              <br>
+                              <input class="mt-3" type="number" name="premier_amount"value="{{(loan_amount + profit) / premier | number : 2 }}"  placeholder="সাপ্তাহিক কিস্তির হার">
                               <br>
                               <input class="mt-3" type="number" name="savings_amount"  placeholder="সঞ্চয়ের পরিমাণ">
                               <br>
+                              
+                              <input class="mt-3" type="number" name="add_cost"  placeholder="ভর্তি চার্জ">
+                              <br>
+                              <input class="mt-3" type="number" name="others_cost"  placeholder="অন্যান্য খরচ">
+                              <br>
+                              <input class="mt-3" type="text" name="details"  placeholder="বিবরণ">
+                      
                             </div>   
                           </div>
                           <button  type="submit" name="img_upload"   class="btn btn-info mt-5 text-white btn-block" >

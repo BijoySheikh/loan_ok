@@ -204,6 +204,12 @@ while ($row = $result->fetch_assoc()) {
       <!-- End of Sidebar -->
 
 
+
+
+
+
+
+
       
       <!-- Content Wrapper -->
       <div id="content-wrapper" class="d-flex flex-column">
@@ -219,30 +225,25 @@ while ($row = $result->fetch_assoc()) {
               </i>
             </button>
             
-            
+
+<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-whatever="@getbootstrap">আরও তথ্য যোগ করুন</button>
+<a href="index.php" class="btn btn-sm btn-secondary ml-2">বর্তমান সদস্য</a>
+
+
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
+            
               <!-- Nav Item - Search Dropdown (Visible Only XS) -->
               <li class="nav-item dropdown no-arrow d-sm-none">
                 <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="fas fa-search fa-fw">
                   </i>
                 </a>
+                
                 <!-- Dropdown - Messages -->
-                <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                  <form class="form-inline mr-auto w-100 navbar-search">
-                    <div class="input-group">
-                      <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                      <div class="input-group-append">
-                        <button class="btn btn-primary" type="button">
-                          <i class="fas fa-search fa-sm">
-                          </i>
-                        </button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </li>
+               
+              
+
               <!-- Nav Item - Alerts -->
               <li class="nav-item dropdown no-arrow mx-1">
                 <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -405,6 +406,9 @@ while ($row = $result->fetch_assoc()) {
             </ul>
           </nav>
           <!-- End of Topbar -->
+
+
+
           
           
 
@@ -633,6 +637,7 @@ echo "<button class='camera_btn btn btn-sm btn-info'><i class='fas fa-camera'></
 
 
 
+
         </div>
         
     </div>
@@ -644,8 +649,50 @@ echo "<button class='camera_btn btn btn-sm btn-info'><i class='fas fa-camera'></
 
 
 
-
-
+<table class="table table-striped table-dark table-bordered" id="datatable">
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">আরও তথ্য যোগ করুন
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;
+                      </span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form  action="premier_data_insert.php" method="post">
+                      <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">ভোটার আই.ডি নং
+                        </label>
+                        <input type="text" class="form-control" name="first_name" id="recipient-name">
+                      </div>
+                      <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Recipient:
+                        </label>
+                        <input type="text" class="form-control" name="last_name" id="recipient-name">
+                      </div>
+                      <div class="form-group">
+                        <input type="hidden" name="test" value="<?php echo $identy; ?>" class="form-control" id="recipient-name">
+                      </div>
+                      <div class="form-group">
+                        <label for="message-text" class="col-form-label">Message:
+                        </label>
+                        <textarea class="form-control" id="message-text">
+                        </textarea>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                        </button>
+                        <button type="submit" value="submit" name="submit" onclick="myFunction()"  class="btn btn-primary">Send message
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
 
 
 
@@ -678,3 +725,32 @@ echo "<button class='camera_btn btn btn-sm btn-info'><i class='fas fa-camera'></
 </body>
 
 </html>
+
+
+<script>
+Swal.mixin({
+  input: 'text',
+  confirmButtonText: 'Next &rarr;',
+  showCancelButton: true,
+  progressSteps: ['1', '2', '3']
+}).queue([
+  {
+    title: 'Question 1',
+    text: 'Chaining swal2 modals is easy'
+  },
+  'Question 2',
+  'Question 3'
+]).then((result) => {
+  if (result.value) {
+    Swal.fire({
+      title: 'All done!',
+      html:
+        'Your answers: <pre><code>' +
+          JSON.stringify(result.value) +
+        '</code></pre>',
+      confirmButtonText: 'Lovely!'
+    })
+  }
+})
+
+</script>
