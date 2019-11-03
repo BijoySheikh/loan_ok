@@ -458,11 +458,7 @@ echo "<button class='camera_btn btn btn-sm btn-info'><i class='fas fa-camera'></
                     <td class=""><h5><?php echo $row['f_name'];?></h5></td>
                   
                     </tr>
-                    <tr>
-                    <th scope="row"><h5>স্বামীর নাম: </h5></th>
-                    <td class=""><h5><?php echo $row['m_name'];?></h5></td>
-                 
-                    </tr>
+                    
                     <tr>
                     <th scope="row"><h5>মোবাইল: </h5></th>
                     <td class=""><h5><?php echo $row['phone_no'];?></h5></td>
@@ -537,22 +533,22 @@ echo "<button class='camera_btn btn btn-sm btn-info'><i class='fas fa-camera'></
                 </thead>
                 <tbody>
                 <th scope="row"><h6>ঋণের পরিমাণ: </h6></th>
-                    <td class="text-left"><h6>fsdfsd</h6></td>
+                    <td class="text-left"><h6><?php echo $row['total_amount'];?> টাকা</h6></td>
                   </tr>
               
                 <tr>
                     <th scope="row"><h6>মূনাফার পরিমাণ: </h6></th>
-                    <td class="text-left"><h6><?php echo $row['permanent_addr'];?></h6></td>
+                    <td class="text-left"><h6><?php echo $row['profit_amount'];?> টাকা</h6></td>
                     </tr>
                     <tr>
                     <th scope="row"><h6>সঞ্চয়ের পরিমাণ :  </h6></th>
-                    <td class="text-left"><h6><?php echo $row['permanent_addr'];?> টাকা</h6></td>
+                    <td class="text-left"><h6><?php echo $row['savings_amount'];?> টাকা</h6></td>
                  
                     </tr>
 
                     <tr>
                       <th scope="row"> <h6>মোট কিস্তির সংখ্যা: </h6></th>
-                      <td class="text-left"><h6><?php echo $row['premier_amount'];?> টি</h6></td>
+                      <td class="text-left"><h6><?php echo $row['premier'];?> টি</h6></td>
                     </tr>
                     
                     <tr>
@@ -562,10 +558,16 @@ echo "<button class='camera_btn btn btn-sm btn-info'><i class='fas fa-camera'></
 
                     
                     <tr>
-                      <th scope="row"> <h6>মোট কিস্তির সংখ্যা: </h6></th>
-                      <td class="text-left"><h6><?php echo $row['premier_amount'];?> টি</h6></td>
+                      <th scope="row"> <h6>ভর্তি ফি </h6></th>
+                      <td class="text-left"><h6><?php echo $row['add_cost'];?> টাকা</h6></td>
                     </tr>
                     
+                    
+                    <tr>
+                      <th scope="row"> <h6>অন্যান্য ফি </h6></th>
+                      <td class="text-left"><h6><?php echo $row['others_cost'];?> টাকা</h6></td>
+                    </tr>
+
                 </tbody>
                 </table>
               </div>
@@ -593,12 +595,12 @@ echo "<button class='camera_btn btn btn-sm btn-info'><i class='fas fa-camera'></
                 <tr>
                   <tr>
                     <th scope="row" width="200"><h6>স্থায়ী ঠিকানা: </h6></th>
-                    <td class="text-left"><h6><?php echo $row['present_addr'];?></h6></td>
+                    <td class="text-left"><h6><?php echo $row['permanent_addr'];?></h6></td>
                     </tr>
                     <tr>
                     <tr>
                       <th scope="col" width="200"><h6>ভোটার আই.ডি নং: </h6></th>
-                      <td class="text-left" scope="col"><h6>fsfsdfsfsd</h6></td>
+                      <td class="text-left" scope="col"><h6><?php echo $row['nid'];?></h6></td>
                     </tr>
                     
                     <tr>
@@ -607,11 +609,11 @@ echo "<button class='camera_btn btn btn-sm btn-info'><i class='fas fa-camera'></
                     </tr>
                     <tr>
                     <th scope="row"> <h6>জামিনদারের মোবাইল নং: </h6></th>
-                    <td class="text-left"><h6><?php echo $row['refer_name'];?></h6></td>
+                    <td class="text-left"><h6><?php echo $row['refer_phone'];?></h6></td>
                     </tr>
                     <tr>
                       <th scope="row"><h6>জামিনদারের ঠিকানা: </h6></th>
-                      <td class="text-left"><h6>fsdfsd</h6></td>
+                      <td class="text-left"><h6><?php echo $row['refer_addr'];?></h6></td>
                     </tr>
                     <tr>
                       <th scope="row"><h6>বিবাহিত: </h6></th>
@@ -726,31 +728,3 @@ echo "<button class='camera_btn btn btn-sm btn-info'><i class='fas fa-camera'></
 
 </html>
 
-
-<script>
-Swal.mixin({
-  input: 'text',
-  confirmButtonText: 'Next &rarr;',
-  showCancelButton: true,
-  progressSteps: ['1', '2', '3']
-}).queue([
-  {
-    title: 'Question 1',
-    text: 'Chaining swal2 modals is easy'
-  },
-  'Question 2',
-  'Question 3'
-]).then((result) => {
-  if (result.value) {
-    Swal.fire({
-      title: 'All done!',
-      html:
-        'Your answers: <pre><code>' +
-          JSON.stringify(result.value) +
-        '</code></pre>',
-      confirmButtonText: 'Lovely!'
-    })
-  }
-})
-
-</script>
