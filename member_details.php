@@ -1,6 +1,25 @@
 <?php
 include "sql_config.php";
 $id = $_GET['id'];
+
+/* total joma */
+$sql = "SELECT sum(joma) AS `joma` FROM `member_premier_data` where test=$id";
+        
+
+      
+$result = mysqli_query($conn, $sql);
+
+$data = mysqli_fetch_array($result);
+
+if($data){
+ $joma = $data['joma'];
+
+}
+
+
+
+
+
 $sql = "SELECT * FROM all_member_form_data WHERE id = $id";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
@@ -8,6 +27,8 @@ if ($result->num_rows > 0) {
 while ($row = $result->fetch_assoc()) {
 
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -449,7 +470,7 @@ echo "<button class='camera_btn btn btn-sm btn-info'><i class='fas fa-camera'></
                 <thead>
                     <tr >
                       <th scope="col" width="150"><h4>নাম: </h4></th>
-                    <th class="" scope="col"><h4><?php echo $row['m_name'];?></h4></th>
+                    <th class="" scope="col"><h4><?php $total = $row['total_amount']; echo $row['m_name'];?></h4></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -471,34 +492,50 @@ echo "<button class='camera_btn btn btn-sm btn-info'><i class='fas fa-camera'></
        <!-- table 1 end-->    
 
 
-               
-       <!-- ============================================= 222222222 ========================================================= -->   
-    <div class="col-md-4  mt-4">
+   
+
+<!-- ============================================= 222222222 ========================================================= -->   
     
+<?php
+ $sql = "SELECT sum(savings) AS `savings` FROM `member_premier_data` where test=$id";
+ 
+ $result = mysqli_query($conn, $sql);
+ $data = mysqli_fetch_array($result);
+ $savings = $data['savings'];
+ $l_total= $row['total_amount'];
+ $profit= $row['profit_amount'];
+ 
+
+
+?>
+
+
+    <div class="col-md-4  mt-4">
          <div class="card shadow p-2">
               <div class="table-responsive">
               <table class="table table-warning">
                 <thead>
                     <tr>
-                      <th scope="col"><h5 class="text-danger">লোনের পরিমাণ: </h5></th>
-                    <td class="text-right" scope="col"><h5><?php echo $row['total_amount'];?> টাকা</h5></td>
+                      <th scope="col"><h5 class="text-danger">মোট লোন :</h5></th>
+                    <td class="text-right" scope="col"><h5><?php echo $l_total; ?> টাকা</h5></td>
+                    </tr>
+                    <tr>
+                      <th scope="col"><h5 class="text-danger">আদায়:</h5></th>
+                    <td class="text-right" scope="col"><h5><?php echo $joma;?> টাকা</h5></td>
                     </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <th scope="row"><h5>মূনাফা: </h5></th>
-                    <td class="text-right"><h5><?php echo $row['profit_amount'];?> টাকা</h5></td>
-                    </tr>
-                    <tr>
-                    <th scope="row"> <h5>আদায়: </h5></th>
-                    <td class="text-right"><h5><?php echo $row['profit_amount'];?> টাকা</h5></td>
-                  
-                    </tr>
-                    <tr>
                     <th scope="row"><h5>বাকী: </h5></th>
-                    <td class="text-right"><h5><?php echo $row['profit_amount'];?> টাকা</h5></td>
+                    <td class="text-right"><h5><?php echo ($l_total-$joma);?> টাকা</h5></td>
                  
                     </tr>
+                <tr>
+                    <th scope="row"><h5>সঞ্চয় আদায়: </h5></th>
+                    <td class="text-right"><h5><?php echo $savings;?> টাকা</h5></td>
+                    </tr>
+                    
+                
                     
                 </tbody>
                 </table>
@@ -580,6 +617,7 @@ echo "<button class='camera_btn btn btn-sm btn-info'><i class='fas fa-camera'></
         <div class="text-center h5 mb-2">
         সদস্যের পরিচিতি তথ্য
         </div>
+        
 
 <!-- =============================================  4444444444444  ========================================================= -->
         <form action="">
@@ -727,4 +765,3 @@ echo "<button class='camera_btn btn btn-sm btn-info'><i class='fas fa-camera'></
 </body>
 
 </html>
-

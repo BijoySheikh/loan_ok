@@ -153,7 +153,7 @@ echo "<button class='camera_btn btn btn-sm btn-info'><i class='fas fa-camera'></
                     $loan_amount = $row["loan_amount"];
                     $profit_amount = $row["profit_amount"];
 
-                   $sql = "SELECT sum(joma) AS `joma` FROM `member_premier_data` where test=$identy ";
+                   $sql = "SELECT sum(joma) AS `joma` FROM `member_premier_data` where test=$identy";
                     
               
                       $result = mysqli_query($conn, $sql);
