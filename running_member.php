@@ -427,14 +427,14 @@ include 'sql_config.php';
         <div class="col-md-12">
             <div class="row mb-3 bg-dark">
                 <div class="col-md-3 col-sm-12 text-white mt-3 mb-2">
-                <h5 >বর্তমান সদস্য :
+                <h5 class="text-warning" >বর্তমান সদস্য :
                               
                               <?php
               $sql = "SELECT * FROM all_member_form_data ORDER BY id";
               if ($result = mysqli_query($conn, $sql)) {
                   // Return the number of rows in result set
                   $rowcount = mysqli_num_rows($result);
-                  printf($rowcount);
+                  echo "<span>" .$rowcount . "</span>";
                   // Free result set
                   mysqli_free_result($result);
               }
@@ -455,6 +455,7 @@ include 'sql_config.php';
             <table class="table table-striped table-dark table-bordered" id="datatable">
                 <thead class="text-center">
                   <tr>
+                    <th>ছবি</th>
                     <th>তারিখ</th>
                     <th>নাম</th>
                     <th>পিতার নাম</th>
@@ -470,27 +471,40 @@ include 'sql_config.php';
                 <?php
 
 
-  $sql = "SELECT id, loan_date, m_name, f_name, loan_amount, total_amount FROM all_member_form_data ORDER BY id ASC";
+  $sql = "SELECT *  FROM all_member_form_data ORDER BY id ASC";
   $res = $conn->query($sql);
 
 if ($res->num_rows > 0) {
     // output data of each row
     while ($row = $res->fetch_assoc()) {
-        echo "<tr><td> " . $row["loan_date"] . " </td>
-                                <td> " . $row["m_name"] . "</td>
-                                <td> " . $row["f_name"] . "</td>
-                                <td> " . $row["loan_amount"] . "</td>
-                                <td> " . $row["total_amount"] . "</td>          
-                                <td class='text-right'><a class='btn btn-info btn-sm' id='alert' href='single_view.php?id=" . $row["id"] . "'>দেখুন</a>
-                                <a class='btn btn-warning btn-sm btn-delete' value='1' name='actiondelete' Onclick='return ConfirmDelete();' id='alert'  href='delete.php?id=" . $row["id"] . "'>ডিলিট</a><a class='btn btn-danger btn-sm ml-1' id='alert' href='delete.php?id=" . $row["id"] . "'>ডিলিট</a></td></tr>";
+      
+    $image = $row["image"];
+      
+   
+        echo "<tr>              
+                                <td width='5%' class='text-center'> <img width='50' class='rounded' src='images/" . $row['image'] . "' ></td>
+                                <td width='10%'> " . $row["loan_date"] . " </td>
+                                <td width='15%'> " . $row["m_name"] . "</td>
+                                <td width='15%'> " . $row["f_name"] . "</td>
+                                <td width='15%'> " . $row["loan_amount"] . "</td>
+                                <td width='15%'> " . $row["total_amount"] . "</td>          
+                                <td class='text-center'><a class='btn btn-info btn-sm' id='alert' href='single_view.php?id=" . $row["id"] . "'>দেখুন</a>
+                                <a class='btn btn-warning btn-sm btn-delete' value='1' name='actiondelete' Onclick='return ConfirmDelete();' id='alert'  href='delete.php?id=" . $row["id"] .  "&image=". $image ."'>ডিলিট</a><a class='btn btn-danger btn-sm ml-1' id='alert' href='delete.php?id=" . $row["id"] . "'>ডিলিট</a></td></tr>";
         
     }
+
+
+
+  
 } else {
     echo "no result";
 }
 
+
 $conn->close();
 ?>
+
+
              
           
             

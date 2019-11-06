@@ -12,7 +12,7 @@ include 'sql_config.php';
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Dashboard</title>
+  <title>Comity - page</title>
  <!-- Custom fonts for this template-->
  <link href="js/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -405,7 +405,7 @@ include 'sql_config.php';
         <div class="col-md-12">
             <div class="row mb-3 bg-dark">
                 <div class="col-md-3 col-sm-12 text-white mt-3 mb-2">
-                <h5 >বর্তমান সদস্য :
+                <h5 >বর্তমান কমিটি:
                               
             <?php
               $sql = "SELECT * FROM comity ORDER BY id";
@@ -442,32 +442,48 @@ include 'sql_config.php';
                 </tr>
                 </thead>
 
-
-            
                 <?php
 
 
-  $sql = "SELECT * FROM comity ORDER BY id ASC";
+  $sql = "SELECT * FROM comity ORDER BY id desc";
   $res = $conn->query($sql);
 
 if ($res->num_rows > 0) {
     // output data of each row
     while ($row = $res->fetch_assoc()) {
+
+                             $image = $row["image"];
+ 
         echo "<tr>
+                                <td width='10%' class='text-center'> 
+                                <img width='50' alt='image of'  class='rounded' src='images/comity/" . $image . "' >
+                                </td>
+                                <td> " . $row["date"] . "</td>
                                 <td> " . $row["name"] . "</td>
                                 <td> " . $row["savings"] . "</td>
+                                
+                                
+                               
                                          
                                 <td class='text-right'><a class='btn btn-info btn-sm' id='alert' href='single_view.php?id=" . $row["id"] . "'>দেখুন</a>
-                                <a class='btn btn-warning btn-sm btn-delete' value='1' name='actiondelete' Onclick='return ConfirmDelete();' id='alert'  href='delete.php?id=" . $row["id"] . "'>ডিলিট</a><a class='btn btn-danger btn-sm ml-1' id='alert' href='delete.php?id=" . $row["id"] . "'>ডিলিট</a></td></tr>";
+                                <a class='btn btn-warning btn-sm btn-delete' value='1' name='actiondelete' Onclick='return ConfirmDelete();' id='alert'  href='comity_delete.php?id=" . $row["id"] . "&image=". $image ."'>ডিলিট</a><a class='btn btn-danger btn-sm ml-1' id='alert' href='delete.php?id=" . $row["id"] . "'>ডিলিট</a></td></tr>";
+ 
+
+                                
         
     }
+
+
 } else {
-    echo "no result";
+  echo "no result";
 }
 
-$conn->close();
+
 ?>
              
+
+
+
           
             
             </table>
@@ -484,6 +500,7 @@ $conn->close();
             
               
  </div>
+
         
           <table class="table  table-dark table-bordered" id="datatable">
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -498,11 +515,11 @@ $conn->close();
                     </button>
                   </div>
                   <div class="modal-body">
-                    <form  action="comity_insert.php" method="post" autocomplete="off">
+                    <form  action="comity_insert.php" method="post" enctype="multipart/form-data" autocomplete="off">
                       <div class="form-group">
                         <label for="datepicker" class="col-form-label">তারিখ:
                         </label>
-                        <input class="form-control" name="premier_date" type="text" id="datepicker" placeholder="তারিখ*" min="2010-01-01" value="">
+                        <input class="form-control" name="date" type="text" id="datepicker" placeholder="তারিখ*" min="2010-01-01" value="">
                         
                       </div>
                       <div class="form-group">
@@ -518,6 +535,9 @@ $conn->close();
                       <div class="form-group">
                         <input type="hidden" name="test" value="<?php echo $identy; ?>" class="form-control" id="recipient-name">
                       </div>
+                      <label for="upload_img" class="btn btn-success btn-sm mt-4">ছবি যোগ করুন</label>
+                              <input style=" display:none;" class="mb-5 mt-3" type="file" name="image" id="upload_img" accept="image/*">
+                     
                       <div class="form-group">
                         <label for="message-text" class="col-form-label">Message:
                         </label>
@@ -527,7 +547,7 @@ $conn->close();
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
                         </button>
-                        <button type="submit" value="submit" name="submit" onclick="myFunction()"  class="btn btn-primary">Send message
+                        <button type="submit" value="submit" name="img_upload" onclick="myFunction()"  class="btn btn-primary">Send message
                         </button>
                       </div>
                     </form>
