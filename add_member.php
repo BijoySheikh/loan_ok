@@ -64,6 +64,12 @@
         </a>
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
+        <?php
+              include 'date.php';
+              $date= date('d-m-Y');
+              echo "<span class='font-weight-bold ml-3 text-warning mt-2'> " . $date . $week_day ."</span>";
+
+        ?>
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
           <a class="nav-link" href="index.php">
@@ -127,7 +133,8 @@
           </div>
         </li>
         <!-- Divider -->
-        <hr class="sidebar-divider">
+        <hr class="sidebar-divider"
+        >
         <!-- Heading -->
         <div class="sidebar-heading">
         সাইট সেটিং
@@ -163,10 +170,10 @@
         </li>
         <!-- Nav Item - Charts -->
         <li class="nav-item">
-          <a class="nav-link" href="charts.html">
+          <a class="nav-link" href="comity.php">
             <i class="fas fa-fw fa-chart-area">
             </i>
-            <span>Charts
+            <span>কমিটি
             </span>
           </a>
         </li>

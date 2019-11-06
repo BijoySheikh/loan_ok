@@ -69,6 +69,14 @@ include 'sql_config.php';
         </a>
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
+        <?php
+              include 'date.php';
+              $date= date('d-m-Y');
+              echo "<span class='font-weight-bold ml-3 text-warning mt-2'> " . $date . $week_day ."</span>";
+              
+
+        ?>
+        <hr class="sidebar-divider my-0">
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
           <a class="nav-link" href="index.php">
@@ -168,10 +176,10 @@ include 'sql_config.php';
         </li>
         <!-- Nav Item - Charts -->
         <li class="nav-item">
-          <a class="nav-link" href="charts.html">
+          <a class="nav-link" href="comity.php">
             <i class="fas fa-fw fa-chart-area">
             </i>
-            <span>Charts
+            <span>কমিটি
             </span>
           </a>
         </li>
@@ -923,7 +931,8 @@ include 'sql_config.php';
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <a class="btn btn-primary" href="login.php
+          ">Logout</a>
         </div>
       </div>
     </div>

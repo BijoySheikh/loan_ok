@@ -1,3 +1,6 @@
+<?php 
+include 'sql_config.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -164,10 +167,10 @@
         </li>
         <!-- Nav Item - Charts -->
         <li class="nav-item">
-          <a class="nav-link" href="charts.html">
+          <a class="nav-link" href="#">
             <i class="fas fa-fw fa-chart-area">
             </i>
-            <span>Charts
+            <span>কমিটি
             </span>
           </a>
         </li>
@@ -193,7 +196,7 @@
       <div id="content-wrapper" class="d-flex flex-column">
         <!-- Main Content -->
         <div id="content">
-        <h2  class="text-white header-top-bg text-center pt-1 pb-1">সদস্য ফরম
+        <h2  class="text-white header-top-bg text-center pt-1 pb-1">কমিটি
           </h2>
           <!-- Topbar -->
           <nav class="navbar navbar-expand navbar-light bg-white topbar mb-1 static-top shadow">
@@ -203,7 +206,8 @@
               </i>
             </button>
             
-            
+            <button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-whatever="@getbootstrap">আরও তথ্য যোগ করুন</button>
+
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
               <!-- Nav Item - Search Dropdown (Visible Only XS) -->
@@ -389,6 +393,148 @@
             </ul>
           </nav>
           <!-- End of Topbar -->
+
+
+<!-- topbar -->
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row mb-3 bg-dark">
+                <div class="col-md-3 col-sm-12 text-white mt-3 mb-2">
+                <h5 >বর্তমান সদস্য :
+                              
+            <?php
+              $sql = "SELECT * FROM comity ORDER BY id";
+              if ($result = mysqli_query($conn, $sql)) {
+                  // Return the number of rows in result set
+                  $rowcount = mysqli_num_rows($result);
+                  printf($rowcount);
+                  // Free result set
+                  mysqli_free_result($result);
+              }
+
+              ?> জন
+                    
+                 </h5>  
+                </div>
+                <div class="col-md-3 col-sm-12 text-white mt-3 mb-2"><h5>পরিশোধকৃত সদস্য : </h5></div>
+                <div class="col-md-3 col-sm-12 text-white mt-3 mb-2"><h5>সর্বমোট প্রদান :  </h5></div>
+                <div class="col-md-3 col-sm-12 text-white">
+                <div class="text-right mt-2">
+                <button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-whatever="@getbootstrap">আরও তথ্য যোগ করুন</button>
+
+                </div>
+                </div>
+            </div>
+            
+            <table class="table table-striped table-dark table-bordered" id="datatable">
+                <thead class="text-center">
+                  <tr>
+                    <th>তারিখ</th>
+                    <th>নাম</th>
+                    <th>জমা</th>
+                    
+
+                </tr>
+                </thead>
+
+
+            
+                <?php
+
+
+  $sql = "SELECT * FROM comity ORDER BY id ASC";
+  $res = $conn->query($sql);
+
+if ($res->num_rows > 0) {
+    // output data of each row
+    while ($row = $res->fetch_assoc()) {
+        echo "<tr>
+                                <td> " . $row["name"] . "</td>
+                                <td> " . $row["savings"] . "</td>
+                                         
+                                <td class='text-right'><a class='btn btn-info btn-sm' id='alert' href='single_view.php?id=" . $row["id"] . "'>দেখুন</a>
+                                <a class='btn btn-warning btn-sm btn-delete' value='1' name='actiondelete' Onclick='return ConfirmDelete();' id='alert'  href='delete.php?id=" . $row["id"] . "'>ডিলিট</a><a class='btn btn-danger btn-sm ml-1' id='alert' href='delete.php?id=" . $row["id"] . "'>ডিলিট</a></td></tr>";
+        
+    }
+} else {
+    echo "no result";
+}
+
+$conn->close();
+?>
+             
+          
+            
+            </table>
+        </div>
+    </div>
+  </div>
+
+  </div>
+
+
+  
+</div>
+          
+            
+              
+ </div>
+        
+          <table class="table  table-dark table-bordered" id="datatable">
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">সঞ্চয় জমা
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;
+                      </span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form  action="comity_insert.php" method="post" autocomplete="off">
+                      <div class="form-group">
+                        <label for="datepicker" class="col-form-label">তারিখ:
+                        </label>
+                        <input class="form-control" name="premier_date" type="text" id="datepicker" placeholder="তারিখ*" min="2010-01-01" value="">
+                        
+                      </div>
+                      <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">জমা
+                        </label>
+                        <input type="number" class="form-control" name="name" id="recipient-name">
+                      </div>
+                      <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">সঞ্চয়
+                        </label>
+                        <input type="number" class="form-control" name="savings" id="recipient-name">
+                      </div>
+                      <div class="form-group">
+                        <input type="hidden" name="test" value="<?php echo $identy; ?>" class="form-control" id="recipient-name">
+                      </div>
+                      <div class="form-group">
+                        <label for="message-text" class="col-form-label">Message:
+                        </label>
+                        <textarea class="form-control" id="message-text">
+                        </textarea>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                        </button>
+                        <button type="submit" value="submit" name="submit" onclick="myFunction()"  class="btn btn-primary">Send message
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
           
           
 

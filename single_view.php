@@ -45,6 +45,7 @@ while ($row = $result->fetch_assoc()) {
   <body>
     <h2  class="text-white header-top-bg text-center pt-1 pb-1">সদস্য
     </h2>
+   
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
         <a href="running_member.php" class="btn btn-sm btn-secondary ml-2">
@@ -267,6 +268,9 @@ mysqli_free_result($result);
 
               </h5>
             </div>
+
+
+            
             <div class="col-md-3 col-sm-12 text-white">
               <div class="text-right mt-2">
                 <button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-whatever="@getbootstrap">কিস্তি নিবন্ধন করুন

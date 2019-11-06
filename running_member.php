@@ -1,8 +1,3 @@
-<?php
-include 'sql_config.php';
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,17 +22,24 @@ include 'sql_config.php';
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/datatables.min.css"/>
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
-
+    
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css" rel="stylesheet" id="bootstrap-css">
-        <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" id="bootstrap-css">
 
-      
-        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>    
-        <link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet">
-        <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-        <link href="css/style.css" rel="stylesheet">
+  
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>    
+    <link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+   
+
+ <?php
+include 'sql_config.php';
+?>
+
+
 
 
     <style>
@@ -77,6 +79,13 @@ include 'sql_config.php';
         </a>
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
+        <?php
+              include 'date.php';
+              $date= date('d-m-Y');
+              echo "<span class='font-weight-bold ml-3 text-warning mt-2'> " . $date . $week_day ."</span>";
+              
+
+        ?>
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
           <a class="nav-link" href="index.php">
@@ -526,20 +535,14 @@ $conn->close();
   <script src="js/demo/chart-area-demo.js"></script>
   <script src="js/demo/chart-pie-demo.js"></script>
  
-    <script src="js/main.js"></script>
-  
-
-
-  
- 
+  <script src="js/main.js"></script>
     
+
+  <!-- Bootstrap core JavaScript-->
+
 </body>
 
-</html> 
-
-
-
-
+</html>
 
 
 <script>
@@ -582,3 +585,4 @@ document.querySelector('warning').onclick = function () {
         return false;
     }
 </script>    
+    

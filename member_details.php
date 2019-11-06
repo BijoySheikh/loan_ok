@@ -1,5 +1,6 @@
 <?php
 include "sql_config.php";
+
 $id = $_GET['id'];
 
 /* total joma */
@@ -84,14 +85,17 @@ while ($row = $result->fetch_assoc()) {
 <body id="page-top">
     <!-- Page Wrapper -->
     <div id="wrapper">
+    
       <!-- Sidebar -->
       <ul class="navbar-nav sidebar_bg sidebar sidebar-dark accordion" id="accordionSidebar">
+      
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
           <div class="sidebar-brand-icon">
           <i class="fas fa-handshake"></i>
             </i>
           </div>
+          
           <div class="sidebar-brand-text mx-3">সমিতি লি:
             <sup>1
             </sup>
@@ -99,6 +103,12 @@ while ($row = $result->fetch_assoc()) {
         </a>
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
+        <?php
+              include 'date.php';
+              $date= date('d-m-Y');
+              echo "<span class='font-weight-bold ml-3 text-warning mt-2'> " . $date . $week_day ."</span>";
+
+        ?>
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
           <a class="nav-link" href="index.php">
@@ -198,10 +208,10 @@ while ($row = $result->fetch_assoc()) {
         </li>
         <!-- Nav Item - Charts -->
         <li class="nav-item">
-          <a class="nav-link" href="charts.html">
+          <a class="nav-link" href="comity.php">
             <i class="fas fa-fw fa-chart-area">
             </i>
-            <span>Charts
+            <span>কমিটি
             </span>
           </a>
         </li>
@@ -221,6 +231,10 @@ while ($row = $result->fetch_assoc()) {
           <button class="rounded-circle border-0" id="sidebarToggle">
           </button>
         </div>
+        
+        
+        
+        
       </ul>
       <!-- End of Sidebar -->
 
@@ -236,11 +250,21 @@ while ($row = $result->fetch_assoc()) {
       <div id="content-wrapper" class="d-flex flex-column">
         <!-- Main Content -->
         <div id="content">
-        <h2  class="text-white header-top-bg text-center pt-1 pb-1">সদস্য ফরম
-          </h2>
+        
+        <h2  class="text-white header-top-bg text-center  pt-1 pb-1">সদস্য ফরম 
+         </h2>
+      
+       
+
+        
+         
+          
+          <h3 class="text-right"></h3>
+          
           <!-- Topbar -->
           <nav class="navbar navbar-expand navbar-light bg-white topbar mb-1 static-top shadow">
             <!-- Sidebar Toggle (Topbar) -->
+           
             <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
               <i class="fa fa-bars">
               </i>
@@ -249,6 +273,9 @@ while ($row = $result->fetch_assoc()) {
 
 <button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-whatever="@getbootstrap">আরও তথ্য যোগ করুন</button>
 <a href="index.php" class="btn btn-sm btn-secondary ml-2">বর্তমান সদস্য</a>
+<a href="reset.php" class="btn btn-sm btn-secondary ml-2">বর্তমান সদস্য</a>
+
+
 
 
             <!-- Topbar Navbar -->
@@ -263,17 +290,15 @@ while ($row = $result->fetch_assoc()) {
                 
                 <!-- Dropdown - Messages -->
                
-              
+
 
               <!-- Nav Item - Alerts -->
+
               <li class="nav-item dropdown no-arrow mx-1">
-                <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="fas fa-bell fa-fw">
-                  </i>
-                  <!-- Counter - Alerts -->
-                  <span class="badge badge-danger badge-counter">3+
-                  </span>
-                </a>
+              
+              
+              
+                
                 <!-- Dropdown - Alerts -->
                 <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                   <h6 class="dropdown-header">
@@ -388,12 +413,16 @@ while ($row = $result->fetch_assoc()) {
                       <div class="small text-gray-500">Chicken the Dog · 2w
                       </div>
                     </div>
+                    
                   </a>
+                  
                   <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages
                   </a>
+                  
                 </div>
               </li>
               <div class="topbar-divider d-none d-sm-block">
+              
               </div>
               <!-- Nav Item - User Information -->
               <li class="nav-item dropdown no-arrow">
@@ -402,6 +431,7 @@ while ($row = $result->fetch_assoc()) {
                   </span>
                   <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
                 </a>
+                
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                   <a class="dropdown-item" href="#">
