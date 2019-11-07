@@ -1,6 +1,23 @@
 
 <?php
-include('sql_config.php');
+session_start();
+include('action/sql_config.php');
+include('action/login.php');
+
+
+
+// Start the session
+$uname = $_SESSION["name"];
+$password = $_SESSION["password"];
+
+if ($uname == $user_name && $password == $user_password) {
+
+   ?>
+
+<!-- ==================================================== -->
+
+<?php
+include('action/sql_config.php');
 
 
 if(isset($_POST["m_name"], $_POST["f_name"])){
@@ -67,3 +84,14 @@ header('location: single_view.php?id='. $last_id);
 
 
 
+
+<!-- ==================================================== -->
+
+   <?php
+}else {
+   header('location: index.php');
+
+
+}
+
+?>

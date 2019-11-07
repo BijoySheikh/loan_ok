@@ -1,6 +1,6 @@
 
 <?php
-include "sql_config.php";
+include('action/sql_config.php');
 if(isset($_POST["premier_date"], $_POST["joma"])){
 $premier_date = mysqli_real_escape_string($conn, $_POST["premier_date"]);
 $joma = mysqli_real_escape_string($conn, $_POST["joma"]);

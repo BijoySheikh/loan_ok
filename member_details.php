@@ -1,6 +1,17 @@
 <?php
-include "sql_config.php";
+session_start();
+include('action/sql_config.php');
+include('action/login.php');
 
+
+// Start the session
+$uname = $_SESSION["name"];
+$password = $_SESSION["password"];
+
+if ($uname == $user_name && $password == $user_password) {
+
+
+   
 $id = $_GET['id'];
 
 /* total joma */
@@ -17,19 +28,13 @@ if($data){
 
 }
 
-
-
-
-
 $sql = "SELECT * FROM all_member_form_data WHERE id = $id";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 // output data of each row
 while ($row = $result->fetch_assoc()) {
-
-?>
-
-
+   ?>
+<!-- --------------------------------------------------------------------------------------------- -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -795,3 +800,23 @@ echo "<button class='camera_btn btn btn-sm btn-info'><i class='fas fa-camera'></
 </body>
 
 </html>
+
+<!-- --------------------------------------------------------------------------------------------- -->
+
+
+   <?php
+}else {
+   header('location: index.php');
+
+
+}
+
+?>
+
+
+
+
+
+
+
+

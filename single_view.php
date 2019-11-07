@@ -1,5 +1,21 @@
 <?php
-include "sql_config.php";
+session_start();
+include('action/sql_config.php');
+include('action/login.php');
+
+
+
+// Start the session
+$uname = $_SESSION["name"];
+$password = $_SESSION["password"];
+
+if ($uname == $user_name && $password == $user_password) {
+
+   ?>
+
+<!-- ==================================================== -->
+<?php
+include('action/sql_config.php');
 $id = $_GET['id'];
 $sql = "SELECT * FROM all_member_form_data WHERE id = $id";
 $result = $conn->query($sql);
@@ -428,3 +444,15 @@ $conn->close();
       </script>
   </body>
 </html> 
+
+<!-- ==================================================== -->
+
+   <?php
+}else {
+   header('location: index.php');
+
+
+}
+
+?>
+

@@ -1,6 +1,6 @@
 <?php
 
-include 'sql_config.php';
+include('action/sql_config.php');
 
 
 
