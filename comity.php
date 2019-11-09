@@ -547,7 +547,7 @@ if ($res->num_rows > 0) {
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
                         </button>
-                        <button type="submit" value="submit" name="img_upload" onclick="myFunction()"  class="btn btn-primary">Send message
+                        <button type="submit" value="submit" name="img_upload"  class="btn btn-primary">Send message
                         </button>
                       </div>
                     </form>

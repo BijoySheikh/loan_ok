@@ -107,6 +107,7 @@ if (isset($_POST["submit"]))
                     
                     $_SESSION["name"] = $user_name;
                     $_SESSION["password"] = $user_password;
+
                     header('location: front-page.php');
                     if(isset($_POST["checked"])) {
                         $cookie_name = $_SESSION["name"];
@@ -124,7 +125,7 @@ if (isset($_POST["submit"]))
                                        
                         }
                     }else {
-                        session_unset();
+                        
                     }
                     
                     

@@ -3,7 +3,6 @@ session_start();
 include('action/sql_config.php');
 
 
-
 if (isset($_SESSION["name"])) {
     $name = $_SESSION["name"];
     $password = $_SESSION["password"];
@@ -107,7 +106,7 @@ if (isset($name)) {
         ?>
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-          <a class="nav-link" href="index.php">
+          <a class="nav-link" href="front-page.php">
           <i class="fas fa-home"></i>
             </i>
             <span>মূলপাতা
@@ -185,19 +184,19 @@ if (isset($name)) {
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">সেটিংস:
               </h6>
-              <a class="collapse-item" href="login.php">লগ ইন
+              <a class="collapse-item" href="index.php">লগ ইন
               </a>
-              <a class="collapse-item" href="register.php">রেজিস্টার
+              <a class="collapse-item" href="action/register.php">রেজিস্টার
               </a>
-              <a class="collapse-item" href="forgot-password.php">পাসওয়ার্ড ভুলে গেছেন
+              <a class="collapse-item" href="action/forgot-password.php">পাসওয়ার্ড ভুলে গেছেন
               </a>
               <div class="collapse-divider">
               </div>
               <h6 class="collapse-header">অন্যান্য:
               </h6>
-              <a class="collapse-item text-danger" href="all_delete.php">সব সদস্য মুছুন
+              <a class="collapse-item text-danger" href="action/all_delete.php">সব সদস্য মুছুন
               </a>
-              <a class="collapse-item text-danger" href="reset.php">রিসেট
+              <a class="collapse-item text-danger" href="action/reset.php">রিসেট
               </a>
             </div>
           </div>
@@ -501,7 +500,7 @@ if ($res->num_rows > 0) {
       
    
         echo "<tr>              
-                                <td width='5%' class='text-center'> <img width='50' class='rounded' src='images/" . $row['image'] . "' ></td>
+                                <td width='5%' class='text-center'> <img width='50' class='rounded' src='images/members/" . $row['image'] . "' ></td>
                                 <td width='10%'> " . $row["loan_date"] . " </td>
                                 <td width='15%'> " . $row["m_name"] . "</td>
                                 <td width='15%'> " . $row["f_name"] . "</td>

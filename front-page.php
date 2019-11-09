@@ -78,7 +78,7 @@ include('action/sql_config.php');
         <hr class="sidebar-divider my-0">
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-          <a class="nav-link" href="index.php">
+          <a class="nav-link" href="front-page.php">
           <i class="fas fa-home"></i>
             </i>
             <span>মূলপাতা
@@ -156,9 +156,9 @@ include('action/sql_config.php');
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">সেটিংস:
               </h6>
-              <a class="collapse-item" href="login.php">লগ ইন
+              <a class="collapse-item" href="index.php">লগ ইন
               </a>
-              <a class="collapse-item" href="action/register.php">রেজিস্টার
+              <a class="collapse-item" href="register.php">রেজিস্টার
               </a>
               <a class="collapse-item" href="forgot-password.php">পাসওয়ার্ড ভুলে গেছেন
               </a>
@@ -357,12 +357,44 @@ include('action/sql_config.php');
 
             <div class="topbar-divider d-none d-sm-block"></div>
 
+
+
+            
+            <?php
+
+
+
+
+$sql = "SELECT * FROM `users` where name='kamal' LIMIT 1";
+$result = $conn->query($sql);
+if ($result) {
+// output data of each row
+while ($row = $result->fetch_assoc()) {
+
+if($row['image']){
+
+  $image =  'images/users/' . $row['image'];
+  $blank =  'images/app_image/blank.jpg';
+  ?>
+
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $row['name']; ?></span>
+                <img class="img-profile rounded-circle" src="<?php if($image){echo $image;}else{echo $blank;} ?>">
               </a>
+
+
+              
+<?php
+
+}
+
+}
+}
+
+
+?>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">
@@ -436,6 +468,9 @@ include('action/sql_config.php');
                 </div>
               </div>
             </div>
+
+
+
 
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">

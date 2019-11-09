@@ -1,14 +1,27 @@
+
 <?php
 session_start();
 include('action/sql_config.php');
-include('action/login.php');
 
+
+
+
+if (isset($_SESSION["name"])) {
+    $name = $_SESSION["name"];
+    $password = $_SESSION["password"];
+    
+}else {
+    echo "not working";
+       
+    header('location: index.php');
+}
 
 // Start the session
-$uname = $_SESSION["name"];
-$password = $_SESSION["password"];
 
-if ($uname == $user_name && $password == $user_password) {
+if (isset($name)) {
+
+ 
+
 
 
    
@@ -114,9 +127,9 @@ while ($row = $result->fetch_assoc()) {
               echo "<span class='font-weight-bold ml-3 text-warning mt-2'> " . $date . $week_day ."</span>";
 
         ?>
-        <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
-          <a class="nav-link" href="index.php">
+         <!-- Nav Item - Dashboard -->
+         <li class="nav-item active">
+          <a class="nav-link" href="front-page.php">
           <i class="fas fa-home"></i>
             </i>
             <span>মূলপাতা
@@ -167,7 +180,7 @@ while ($row = $result->fetch_assoc()) {
               </h6>
               <a class="collapse-item" href="add_member.php">সদস্য যোগ করুন
               </a>
-              <a class="collapse-item" href="utilities-other.php">বর্তমান সদস্য
+              <a class="collapse-item" href="running_member.php">বর্তমান সদস্য
               </a>
               <a class="collapse-item" href="paid_member.php">পরিশোধকৃত সদস্য
               </a>
@@ -194,19 +207,19 @@ while ($row = $result->fetch_assoc()) {
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">সেটিংস:
               </h6>
-              <a class="collapse-item" href="login.php">লগ ইন
+              <a class="collapse-item" href="index.php">লগ ইন
               </a>
-              <a class="collapse-item" href="register.php">রেজিস্টার
+              <a class="collapse-item" href="action/register.php">রেজিস্টার
               </a>
-              <a class="collapse-item" href="forgot-password.php">পাসওয়ার্ড ভুলে গেছেন
+              <a class="collapse-item" href="action/forgot-password.php">পাসওয়ার্ড ভুলে গেছেন
               </a>
               <div class="collapse-divider">
               </div>
               <h6 class="collapse-header">অন্যান্য:
               </h6>
-              <a class="collapse-item text-danger" href="all_delete.php">সব সদস্য মুছুন
+              <a class="collapse-item text-danger" href="action/all_delete.php">সব সদস্য মুছুন
               </a>
-              <a class="collapse-item text-danger" href="reset.php">রিসেট
+              <a class="collapse-item text-danger" href="action/reset.php">রিসেট
               </a>
             </div>
           </div>
@@ -806,6 +819,7 @@ echo "<button class='camera_btn btn btn-sm btn-info'><i class='fas fa-camera'></
 
    <?php
 }else {
+
    header('location: index.php');
 
 

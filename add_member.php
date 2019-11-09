@@ -94,7 +94,7 @@ if (isset($name)) {
         ?>
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-          <a class="nav-link" href="index.php">
+          <a class="nav-link" href="front-page.php">
           <i class="fas fa-home"></i>
             </i>
             <span>মূলপাতা
@@ -173,9 +173,9 @@ if (isset($name)) {
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">সেটিংস:
               </h6>
-              <a class="collapse-item" href="login.php">লগ ইন
+              <a class="collapse-item" href="index.php">লগ ইন
               </a>
-              <a class="collapse-item" href="register.php">রেজিস্টার
+              <a class="collapse-item" href="action/register.php">রেজিস্টার
               </a>
               <a class="collapse-item" href="forgot-password.php">পাসওয়ার্ড ভুলে গেছেন
               </a>
@@ -397,6 +397,14 @@ if (isset($name)) {
               </li>
               <div class="topbar-divider d-none d-sm-block">
               </div>
+
+
+<?php 
+
+
+?>
+
+
               <!-- Nav Item - User Information -->
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

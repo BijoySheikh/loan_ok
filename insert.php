@@ -2,15 +2,23 @@
 <?php
 session_start();
 include('action/sql_config.php');
-include('action/login.php');
 
 
+
+
+if (isset($_SESSION["name"])) {
+    $name = $_SESSION["name"];
+    $password = $_SESSION["password"];
+    
+}else {
+    echo "not working";
+       
+    header('location: index.php');
+}
 
 // Start the session
-$uname = $_SESSION["name"];
-$password = $_SESSION["password"];
 
-if ($uname == $user_name && $password == $user_password) {
+if (isset($name)) {
 
    ?>
 
@@ -68,7 +76,7 @@ header('location: single_view.php?id='. $last_id);
   if (isset($_POST['img_upload'])) {
 
   	// image file directory
-  	$target = "images/".basename($image);
+  	$target = "images/members/".basename($image);
 
   	if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
   		$msg = "Image uploaded successfully";
@@ -87,9 +95,9 @@ header('location: single_view.php?id='. $last_id);
 
 <!-- ==================================================== -->
 
-   <?php
-}else {
-   header('location: index.php');
+<?php
+
+
 
 
 }

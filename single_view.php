@@ -107,7 +107,7 @@ while ($row = $result->fetch_assoc()) {
             <?php
 if($row['image']){
 echo "<div id='img_div'>";
-echo "<img width='200' alt='image of " . $row["m_name"] . " '  class='img-thumbnail rounded' src='images/" . $row['image'] . "' >";
+echo "<img width='200' alt='image of " . $row["m_name"] . " '  class='img-thumbnail rounded' src='images/members/" . $row['image'] . "' >";
 echo "</div>";
 }
 else{
@@ -343,7 +343,7 @@ mysqli_free_result($result);
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
                         </button>
-                        <button type="submit" value="submit" name="submit" onclick="myFunction()"  class="btn btn-primary">Send message
+                        <button type="submit" value="submit" name="submit"  class="btn btn-primary">Send message
                         </button>
                       </div>
                     </form>
