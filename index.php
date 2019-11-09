@@ -76,15 +76,6 @@ session_start();
                                     </div>
 
 
-
-
-
-
-
-
-
-
-
                                     
  <?php
 include ('action/sql_config.php');
@@ -113,9 +104,10 @@ if (isset($_POST["submit"]))
                 $user_password = $row["password"];
                 if ($uname == $user_name && $password == $user_password)
                 {
-                    echo "its work";
+                    
                     $_SESSION["name"] = $user_name;
                     $_SESSION["password"] = $user_password;
+                    header('location: front-page.php');
                     if(isset($_POST["checked"])) {
                         $cookie_name = $_SESSION["name"];
                         $cookie_value = $_SESSION["password"];
@@ -127,17 +119,27 @@ if (isset($_POST["submit"]))
                             
                                 ?>
 
-                                <script>
+
+                              <?php
+                                       
+                        }
+                    }else {
+                        session_unset();
+                    }
+                    
+                    
+                }else {
+                    session_unset();
+                    ?>
+
+                    
+                            <script>
                                 function myFunction() {
                                     document.getElementById("myForm").reset();
                                 }
                               </script>
 
-                              <?php
-                                       
-                        }
-                    }
-                    
+                    <?php
                 }
             }
         }
@@ -164,14 +166,14 @@ if (isset($_POST["submit"]))
 
                                     <form class="user" id="myForm" action="" method="post">
                                         <div class="form-group">
-                                            <input type="text" name="name" value="<?php if(isset($cookie_name)){ echo $cookie_name;} ?>" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="ইউজার নেম">
+                                            <input type="text" name="name" value="<?php if(isset($_SESSION["name"])){ echo $_SESSION["name"];} ?>" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="ইউজার নেম">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" name="password" value="<?php if(isset($cookie_name)){ echo $cookie_value;} ?>" class="form-control form-control-user" id="exampleInputPassword" placeholder="পাসওয়ার্ড">
+                                            <input type="password" name="password" value="<?php if(isset($_SESSION["password"])){ echo $_SESSION["password"];} ?>" class="form-control form-control-user" id="exampleInputPassword" placeholder="পাসওয়ার্ড">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox"  name="checked" class="custom-control-input" id="customCheck" <?php if(!isset($cookie_name)) { ?>  <?php }else{?> checked <?php } ?> >
+                                                <input type="checkbox"  name="checked" class="custom-control-input" id="customCheck" <?php if(!isset($_SESSION["password"])) { ?>   <?php }else{?> checked <?php } ?> >
                                                 <label class="custom-control-label" for="customCheck">মনে রাখুন</label>
                                             </div>
                                         </div>
